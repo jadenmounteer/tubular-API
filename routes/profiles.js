@@ -3,7 +3,6 @@ const connect = require('../db/connect');
 const profilesController = require('../controllers/profiles.js');
 
 // Return all of the user profiles
-
 routes.get('/', profilesController.getAll);
 
 // routes.get('/', (req, res) => {
