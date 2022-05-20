@@ -1,4 +1,3 @@
-// .env variables MONGODB_URI
 const dotenv = require('dotenv');
 dotenv.config();
 const MongoClient = require('mongodb').MongoClient;
@@ -10,8 +9,6 @@ const initDb = (callback) => {
     console.log('Db is already initialized!');
     return callback(null, _db);
   }
-
-  // process.env.MONGODB_URI
   MongoClient.connect(process.env.MONGODB_URI)
     .then((client) => {
       _db = client;
