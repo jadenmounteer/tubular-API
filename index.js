@@ -6,6 +6,10 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
 
+// Initialize the database
+const connection = require('./db/connect');
+connection.initDatabase();
+
 app.use('/', require('./routes'));
 
 app.listen(port, () => {
