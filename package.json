@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/jadenmounteer/tubular-API/issues"
   },
-  "homepage": "https://github.com/jadenmounteer/tubular-API#readme"
+  "homepage": "https://github.com/jadenmounteer/tubular-API#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
 }
