@@ -12,9 +12,7 @@ const initDb = (callback) => {
   }
 
   // process.env.MONGODB_URI
-  MongoClient.connect(
-    'mongodb+srv://the1shortguyfromRFM:W0oi01G2vHrodj8t@cluster0.sfayv.mongodb.net/?retryWrites=true&w=majority'
-  )
+  MongoClient.connect(process.env.MONGODB_URI)
     .then((client) => {
       _db = client;
       callback(null, _db);
