@@ -2,9 +2,17 @@
 
 # Running the app
 
-Use npm run start
+Use: npm run dev
 
 # Pushing changes
 
-Commit your changest to gitHub.
+Commit your changes to gitHub.
 Remember to also push your changes to Heroku using: git push heroku
+
+# Debugging
+
+Use: heroku logs to see Heroku's logs.
+
+# View the app in production
+
+https://tubular-backend.herokuapp.com/
