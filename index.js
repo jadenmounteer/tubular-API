@@ -1,17 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const mongodb = require('./db/connect');
 
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
 
-// Initialize the database
-const connection = require('./db/connect');
-connection.initDatabase();
-
 app.use('/', require('./routes'));
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
+mongodb.initDb((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    app.listen(port);
+    console.log(`Connected to DB and listening on ${port}`);
+    console.log(mongodb.getDb());
+  }
 });

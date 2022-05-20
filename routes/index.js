@@ -4,6 +4,8 @@ routes.get('/', (req, res) => {
   res.send('Hello world');
 });
 
+routes.use('/profiles', require('./profiles'));
+
 module.exports = routes;
 
 // TODO: Incorporate controllers like in the professor's code:

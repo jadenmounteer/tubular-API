@@ -1,24 +1,34 @@
 // .env variables MONGODB_URI
 const dotenv = require('dotenv');
 dotenv.config();
-
-// Database code
 const MongoClient = require('mongodb').MongoClient;
 
-let _client;
-let _collection;
+let _db;
 
-const initDatabase = () => {
-  MongoClient.connect(process.env.MONGODB_URI, (err, client) => {
-    if (err) throw err;
-    _client = client;
-    _collection = client.db('tubular').collection('user_profiles');
-    console.log('DB connected successfully');
-  });
+const initDb = (callback) => {
+  if (_db) {
+    console.log('Db is already initialized!');
+    return callback(null, _db);
+  }
+
+  MongoClient.connect(process.env.MONGODB_URI)
+    .then((client) => {
+      _db = client;
+      callback(null, _db);
+    })
+    .catch((err) => {
+      callback(err);
+    });
 };
 
-const getCollection = () => {
-  return _collection;
+const getDb = () => {
+  if (!_db) {
+    throw Error('Db not initialized');
+  }
+  return _db;
 };
 
-module.exports = { initDatabase, getCollection };
+module.exports = {
+  initDb,
+  getDb,
+};
