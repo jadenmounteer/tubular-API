@@ -1,0 +1,37 @@
+### LOCALHOST 
+
+### Get all profiles
+GET http://localhost:3000/profiles
+
+### Get profile by id
+GET http://localhost:3000/profiles/62871171ad3a5374a92f8aa9
+
+### Create a new profile
+POST http://localhost:3000/profiles HTTP/1.1
+content-type: application/json
+
+{
+    "userName":"NewerProfile",
+    "password":"newProfPass",
+    "email":"newProfile@test.com"
+}
+
+
+
+### HEROKU
+
+### Get all profiles
+GET https://tubular-backend.herokuapp.com/profiles
+
+### Get profile by id
+GET https://tubular-backend.herokuapp.com/profiles/62871171ad3a5374a92f8aa9
+
+### Create a new profile
+POST https://tubular-backend.herokuapp.com/profiles HTTP/1.1
+content-type: application/json
+
+{
+    "userName":"NewerProfile",
+    "password":"newProfPass",
+    "email":"newProfile@test.com"
+}
