@@ -5,7 +5,7 @@
     "description": "Contacts API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "tubular-backend.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -86,6 +86,13 @@
             "description": "OK"
           }
         }
+      }
+    },
+    "/api-docs/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   }
