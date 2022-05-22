@@ -7,7 +7,7 @@ const doc = {
     title: 'Contacts API',
     description: 'Contacts API',
   },
-  host: 'https://tubular-backend.herokuapp.com',
+  host: 'tubular-backend.herokuapp.com',
   schemes: ['https'],
 };
 
