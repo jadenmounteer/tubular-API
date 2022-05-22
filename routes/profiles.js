@@ -5,12 +5,10 @@ const profilesController = require('../controllers/profiles.js');
 // Return all of the user profiles
 routes.get('/', profilesController.getAll);
 
-// routes.get('/', (req, res) => {
-//   const results = connect.getCollection().find();
+// Return a single user profile
+routes.get('/:id', profilesController.getSingleProfile);
 
-//   results.toArray().then((documents) => {
-//     res.status(200).json(documents);
-//   });
-// });
+// Create a new profile
+routes.post('/', profilesController.createProfile);
 
 module.exports = routes;
