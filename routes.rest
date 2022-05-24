@@ -16,6 +16,19 @@ content-type: application/json
     "email":"newProfile@test.com"
 }
 
+### Delete a profile
+DELETE http://localhost:3000/profiles/628d4918eac73b481c8f76a7
+
+### Update a profile
+PUT http://localhost:3000/profiles/628d4918eac73b481c8f76a7 HTTP/1.1
+content-type: application/json
+
+{
+    "userName":"NewerProfile",
+    "password":"newProfPass",
+    "email":"newProfile@test.com"
+}
+
 ### Get all exercises
 GET http://localhost:3000/exercises
 
@@ -102,4 +115,17 @@ content-type: application/json
     "images":[],
     "videos":[],
     "tags":["cardio"]
+}
+
+### Delete a profile
+DELETE https://tubular-backend.herokuapp.com/profiles/628d4918eac73b481c8f76a7
+
+### Update a profile
+PUT https://tubular-backend.herokuapp.com/628d4918eac73b481c8f76a7 HTTP/1.1
+content-type: application/json
+
+{
+    "userName":"NewerProfile",
+    "password":"newProfPass",
+    "email":"newProfile@test.com"
 }

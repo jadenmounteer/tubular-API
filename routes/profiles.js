@@ -10,4 +10,10 @@ routes.get('/:id', profilesController.getSingleProfile);
 // Create a new profile
 routes.post('/', profilesController.createProfile);
 
+// Delete a profile
+routes.delete('/:id', profilesController.deleteProfile);
+
+// Update a profile
+routes.put('/:id', profilesController.updateProfile);
+
 module.exports = routes;
