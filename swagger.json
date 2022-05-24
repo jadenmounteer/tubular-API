@@ -165,7 +165,7 @@
         }
       }
     },
-    "/exercises/{id}": {
+    "/exercises/{exercise_id}": {
       "get": {
         "description": "",
         "produces": [
@@ -173,7 +173,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "exercise_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -189,7 +189,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "exercise_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -205,7 +205,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "exercise_id",
             "in": "path",
             "required": true,
             "type": "string"
