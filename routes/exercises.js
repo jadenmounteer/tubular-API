@@ -5,15 +5,15 @@ const exercisesController = require('../controllers/exercises.js');
 routes.get('/:user_id', exercisesController.getAll);
 
 // Return a single exercise
-routes.get('/:id', exercisesController.getSingleExercise);
+routes.get('/:exercise_id', exercisesController.getSingleExercise);
 
 // Create a user-added exercise
 routes.post('/', exercisesController.createExercise);
 
 // Delete a user-added exercise
-routes.delete('/:id', exercisesController.checkIfAbleToDeleteExercise);
+routes.delete('/:exercise_id', exercisesController.checkIfAbleToDeleteExercise);
 
 // Update a user-added exercise
-routes.put('/:id', exercisesController.updateExercise);
+routes.put('/:exercise_id', exercisesController.updateExercise);
 
 module.exports = routes;

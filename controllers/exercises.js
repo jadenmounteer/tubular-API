@@ -21,7 +21,7 @@ const getAll = async (req, res) => {
 };
 
 const getSingleExercise = async (req, res) => {
-  const exerciseId = new ObjectId(req.params.id);
+  const exerciseId = new ObjectId(req.params.exercise_id);
   const result = await mongodb
     .getDb()
     .db('tubular')
@@ -62,7 +62,7 @@ const createExercise = async (req, res) => {
 };
 
 const checkIfAbleToDeleteExercise = async (req, res) => {
-  const exerciseId = new ObjectId(req.params.id);
+  const exerciseId = new ObjectId(req.params.exercise_id);
 
   // Get the exercise we want to delete
   const result = await mongodb
@@ -104,7 +104,7 @@ async function deleteExercise(exerciseId, req, res) {
 }
 
 const updateExercise = async (req, res) => {
-  const exerciseId = new ObjectId(req.params.id);
+  const exerciseId = new ObjectId(req.params.exercise_id);
   // be aware of updateOne if you only want to update specific fields
   const exercise = {
     name: req.body.name,
