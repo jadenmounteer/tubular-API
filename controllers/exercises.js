@@ -53,8 +53,28 @@ const createExercise = async (req, res) => {
   }
 };
 
+const deleteExercise = async (req, res) => {
+  const exerciseId = new ObjectId(req.params.id);
+  const response = await mongodb
+    .getDb()
+    .db('tubular')
+    .collection('exercises')
+    .remove({ _id: exerciseId }, true);
+
+  if (response.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(
+        response.error || 'Some error occurred while deleting the exercise.'
+      );
+  }
+};
+
 module.exports = {
   getAll,
   getSingleExercise,
   createExercise,
+  deleteExercise,
 };

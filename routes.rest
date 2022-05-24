@@ -35,6 +35,10 @@ content-type: application/json
 }
 
 
+### Delete an exercise
+DELETE http://localhost:3000/exercises/628d4918eac73b481c8f76a7
+
+
 
 ### HEROKU
 
@@ -71,4 +75,7 @@ content-type: application/json
     "videos":[],
     "tags":["cardio", "no-weight"]
 }
+
+### Delete an exercise
+DELETE https://tubular-backend.herokuapp.com/exercises/628d4918eac73b481c8f76a7
 

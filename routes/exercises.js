@@ -7,7 +7,10 @@ routes.get('/', exercisesController.getAll);
 // Return a single exercise
 routes.get('/:id', exercisesController.getSingleExercise);
 
-// Create a new exercise
+// Create a user-added exercise
 routes.post('/', exercisesController.createExercise);
+
+// Delete a user-added exercise
+routes.delete('/:id', exercisesController.deleteExercise);
 
 module.exports = routes;
