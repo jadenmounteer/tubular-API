@@ -2,16 +2,21 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId; // This is so we can query by the db ID
 
 const getAll = async (req, res) => {
+  const userId = new ObjectId(req.params.user_id);
   const result = await mongodb
     .getDb()
     .db('tubular')
     .collection('exercises')
     .find();
   result.toArray().then((lists) => {
-    // TODO: Filter out the custom exercises that do not belong to this user
-    // e.g. if user_id != user.userId || user_id != null
+    // Filter out the custom exercises that should not be visible to the user
+    const filteredList = lists.filter((exercise) => {
+      if (exercise.user_id == userId || exercise.user_id == 'null') {
+        return exercise;
+      }
+    });
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
+    res.status(200).json(filteredList);
   });
 };
 

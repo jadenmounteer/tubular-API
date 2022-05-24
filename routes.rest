@@ -29,8 +29,8 @@ content-type: application/json
     "email":"newProfile@test.com"
 }
 
-### Get all exercises
-GET http://localhost:3000/exercises
+### Get all exercises visible to the user
+GET http://localhost:3000/exercises/6289c73116dced53b6301f34
 
 ### Get exercise by id
 GET http://localhost:3000/exercises/628d436adb3d9e3cba6a1792
@@ -86,8 +86,8 @@ content-type: application/json
     "email":"newProfile@test.com"
 }
 
-### Get all exercises
-GET https://tubular-backend.herokuapp.com/exercises
+### Get all exercises visible to the user
+GET https://tubular-backend.herokuapp.com/exercises/6289c73116dced53b6301f34
 
 ### Get exercise by id
 GET https://tubular-backend.herokuapp.com/exercises/628d436adb3d9e3cba6a1792
