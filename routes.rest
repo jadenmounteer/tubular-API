@@ -19,6 +19,8 @@ content-type: application/json
 ### Get all exercises
 GET http://localhost:3000/exercises
 
+### Get exercise by id
+GET http://localhost:3000/exercises/628d436adb3d9e3cba6a1792
 
 
 ### HEROKU
@@ -41,3 +43,7 @@ content-type: application/json
 
 ### Get all exercises
 GET https://tubular-backend.herokuapp.com/exercises
+
+### Get exercise by id
+GET https://tubular-backend.herokuapp.com/exercises/628d436adb3d9e3cba6a1792
+
