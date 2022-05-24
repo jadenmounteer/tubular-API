@@ -50,7 +50,7 @@ content-type: application/json
 
 
 ### Delete an exercise
-DELETE http://localhost:3000/exercises/628d560e3d6ece3ab378d9e1
+DELETE http://localhost:3000/exercises/628d436adb3d9e3cba6a1792
 
 ### Update an exercise
 PUT http://localhost:3000/exercises/628d505e82b99c3474e6c474 HTTP/1.1
@@ -106,7 +106,7 @@ content-type: application/json
 }
 
 ### Delete an exercise
-DELETE https://tubular-backend.herokuapp.com/exercises/628d4918eac73b481c8f76a7
+DELETE https://tubular-backend.herokuapp.com/exercises/628d56253d6ece3ab378d9e2
 
 ### Update an exercise
 PUT https://tubular-backend.herokuapp.com/628d505e82b99c3474e6c474 HTTP/1.1

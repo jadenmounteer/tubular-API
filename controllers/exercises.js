@@ -16,12 +16,12 @@ const getAll = async (req, res) => {
 };
 
 const getSingleExercise = async (req, res) => {
-  const userId = new ObjectId(req.params.id);
+  const exerciseId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
     .db('tubular')
     .collection('exercises')
-    .find({ _id: userId });
+    .find({ _id: exerciseId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
@@ -56,14 +56,37 @@ const createExercise = async (req, res) => {
   }
 };
 
-const deleteExercise = async (req, res) => {
+const checkIfAbleToDeleteExercise = async (req, res) => {
   const exerciseId = new ObjectId(req.params.id);
+
+  // Get the exercise we want to delete
+  const result = await mongodb
+    .getDb()
+    .db('tubular')
+    .collection('exercises')
+    .find({ _id: exerciseId });
+
+  result.toArray().then((lists) => {
+    const userId = lists[0].user_id;
+    if (userId == 'null') {
+      res
+        .status(500)
+        .json(
+          result.error ||
+            'This is not a user-created exercise. Unable to delete.'
+        );
+    } else {
+      deleteExercise(exerciseId, req, res);
+    }
+  });
+};
+
+async function deleteExercise(exerciseId, req, res) {
   const response = await mongodb
     .getDb()
     .db('tubular')
     .collection('exercises')
     .remove({ _id: exerciseId }, true);
-  // TODO Make the user unable to delete an exercise if it wasn't user_added
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
@@ -73,7 +96,7 @@ const deleteExercise = async (req, res) => {
         response.error || 'Some error occurred while deleting the exercise.'
       );
   }
-};
+}
 
 const updateExercise = async (req, res) => {
   const exerciseId = new ObjectId(req.params.id);
@@ -108,6 +131,6 @@ module.exports = {
   getAll,
   getSingleExercise,
   createExercise,
-  deleteExercise,
   updateExercise,
+  checkIfAbleToDeleteExercise,
 };

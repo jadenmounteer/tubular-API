@@ -11,7 +11,7 @@ routes.get('/:id', exercisesController.getSingleExercise);
 routes.post('/', exercisesController.createExercise);
 
 // Delete a user-added exercise
-routes.delete('/:id', exercisesController.deleteExercise);
+routes.delete('/:id', exercisesController.checkIfAbleToDeleteExercise);
 
 // Update a user-added exercise
 routes.put('/:id', exercisesController.updateExercise);
