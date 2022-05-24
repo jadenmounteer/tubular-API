@@ -44,12 +44,13 @@ content-type: application/json
     "description":"Run around the block near our apartment.",
     "images":[],
     "videos":[],
-    "tags":["cardio", "no-weight"]
+    "tags":["cardio", "no-weight"],
+    "user_id": "62871171ad3a5374a92f8aa9"
 }
 
 
 ### Delete an exercise
-DELETE http://localhost:3000/exercises/628d4918eac73b481c8f76a7
+DELETE http://localhost:3000/exercises/628d560e3d6ece3ab378d9e1
 
 ### Update an exercise
 PUT http://localhost:3000/exercises/628d505e82b99c3474e6c474 HTTP/1.1
@@ -60,7 +61,8 @@ content-type: application/json
     "description":"Run around the block near our apartment.",
     "images":[],
     "videos":[],
-    "tags":["cardio"]
+    "tags":["cardio"],
+    "user_id": "62871171ad3a5374a92f8aa9"
 }
 
 
@@ -99,7 +101,8 @@ content-type: application/json
     "description":"Run around the block near our apartment.",
     "images":[],
     "videos":[],
-    "tags":["cardio", "no-weight"]
+    "tags":["cardio", "no-weight"],
+    "user_id": "62871171ad3a5374a92f8aa9"
 }
 
 ### Delete an exercise
@@ -114,7 +117,8 @@ content-type: application/json
     "description":"Run around the block near our apartment.",
     "images":[],
     "videos":[],
-    "tags":["cardio"]
+    "tags":["cardio"],
+    "user_id": "62871171ad3a5374a92f8aa9"
 }
 
 ### Delete a profile

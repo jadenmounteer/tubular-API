@@ -8,6 +8,8 @@ const getAll = async (req, res) => {
     .collection('exercises')
     .find();
   result.toArray().then((lists) => {
+    // TODO: Filter out the custom exercises that do not belong to this user
+    // e.g. if user_id != user.userId || user_id != null
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
   });
@@ -33,6 +35,7 @@ const createExercise = async (req, res) => {
     images: req.body.images,
     videos: req.body.videos,
     tags: req.body.tags,
+    user_id: req.body.user_id,
     user_added: true,
   };
 
@@ -60,7 +63,7 @@ const deleteExercise = async (req, res) => {
     .db('tubular')
     .collection('exercises')
     .remove({ _id: exerciseId }, true);
-
+  // TODO Make the user unable to delete an exercise if it wasn't user_added
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
@@ -81,6 +84,7 @@ const updateExercise = async (req, res) => {
     images: req.body.images,
     videos: req.body.videos,
     tags: req.body.tags,
+    user_id: req.body.user_id,
     user_added: true,
   };
   const response = await mongodb
