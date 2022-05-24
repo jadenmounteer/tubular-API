@@ -16,6 +16,9 @@ content-type: application/json
     "email":"newProfile@test.com"
 }
 
+### Get all exercises
+GET http://localhost:3000/exercises
+
 
 
 ### HEROKU
@@ -35,3 +38,6 @@ content-type: application/json
     "password":"newProfPass",
     "email":"newProfile@test.com"
 }
+
+### Get all exercises
+GET https://tubular-backend.herokuapp.com/exercises

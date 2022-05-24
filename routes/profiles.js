@@ -1,5 +1,4 @@
 const routes = require('express').Router();
-const connect = require('../db/connect');
 const profilesController = require('../controllers/profiles.js');
 
 // Return all of the user profiles

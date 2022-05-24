@@ -5,6 +5,7 @@ routes.get('/', (req, res) => {
 });
 
 routes.use('/profiles', require('./profiles'));
+routes.use('/exercises', require('./exercises'));
 routes.use('/api-docs', require('./swagger'));
 
 module.exports = routes;
