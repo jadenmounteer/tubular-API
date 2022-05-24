@@ -72,9 +72,38 @@ const deleteExercise = async (req, res) => {
   }
 };
 
+const updateExercise = async (req, res) => {
+  const exerciseId = new ObjectId(req.params.id);
+  // be aware of updateOne if you only want to update specific fields
+  const exercise = {
+    name: req.body.name,
+    description: req.body.description,
+    images: req.body.images,
+    videos: req.body.videos,
+    tags: req.body.tags,
+    user_added: true,
+  };
+  const response = await mongodb
+    .getDb()
+    .db('tubular')
+    .collection('exercises')
+    .replaceOne({ _id: exerciseId }, exercise);
+
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(
+        response.error || 'Some error occurred while updating the exercise.'
+      );
+  }
+};
+
 module.exports = {
   getAll,
   getSingleExercise,
   createExercise,
   deleteExercise,
+  updateExercise,
 };

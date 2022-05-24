@@ -13,4 +13,7 @@ routes.post('/', exercisesController.createExercise);
 // Delete a user-added exercise
 routes.delete('/:id', exercisesController.deleteExercise);
 
+// Update a user-added exercise
+routes.put('/:id', exercisesController.updateExercise);
+
 module.exports = routes;

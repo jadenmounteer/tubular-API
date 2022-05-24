@@ -38,6 +38,19 @@ content-type: application/json
 ### Delete an exercise
 DELETE http://localhost:3000/exercises/628d4918eac73b481c8f76a7
 
+### Update an exercise
+PUT http://localhost:3000/exercises/628d505e82b99c3474e6c474 HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Run Around the Block",
+    "description":"Run around the block near our apartment.",
+    "images":[],
+    "videos":[],
+    "tags":["cardio"]
+}
+
+
 
 
 ### HEROKU
@@ -79,3 +92,14 @@ content-type: application/json
 ### Delete an exercise
 DELETE https://tubular-backend.herokuapp.com/exercises/628d4918eac73b481c8f76a7
 
+### Update an exercise
+PUT https://tubular-backend.herokuapp.com/628d505e82b99c3474e6c474 HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Run Around the Block",
+    "description":"Run around the block near our apartment.",
+    "images":[],
+    "videos":[],
+    "tags":["cardio"]
+}
