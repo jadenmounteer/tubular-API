@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts API",
-    "description": "Contacts API",
+    "title": "Tubular API",
+    "description": "The Tubular API allows you to create user profiles, view an extensive library of exercises, and create your own exercises!",
     "version": "1.0.0"
   },
   "host": "tubular-backend.herokuapp.com",

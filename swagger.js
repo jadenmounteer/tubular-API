@@ -4,8 +4,9 @@ const swaggerAutogen = require('swagger-autogen')();
 // https://tubular-backend.herokuapp.com
 const doc = {
   info: {
-    title: 'Contacts API',
-    description: 'Contacts API',
+    title: 'Tubular API',
+    description:
+      'The Tubular API allows you to create user profiles, view an extensive library of exercises, and create your own exercises!',
   },
   host: 'tubular-backend.herokuapp.com',
   schemes: ['https'],
