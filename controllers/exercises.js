@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
   result.toArray().then((lists) => {
     // Filter out the custom exercises that should not be visible to the user
     const filteredList = lists.filter((exercise) => {
-      if (exercise.user_id == userId || exercise.user_id == 'null') {
+      if (exercise.user_id == userId || exercise.user_added == 'false') {
         return exercise;
       }
     });
