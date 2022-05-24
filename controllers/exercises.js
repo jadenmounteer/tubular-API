@@ -26,7 +26,35 @@ const getSingleExercise = async (req, res) => {
   });
 };
 
+const createExercise = async (req, res) => {
+  const exercise = {
+    name: req.body.name,
+    description: req.body.description,
+    images: req.body.images,
+    videos: req.body.videos,
+    tags: req.body.tags,
+    user_added: true,
+  };
+
+  const response = await mongodb
+    .getDb()
+    .db('tubular')
+    .collection('exercises')
+    .insertOne(exercise);
+
+  if (response.acknowledged) {
+    res.status(201).json(response);
+  } else {
+    res
+      .status(500)
+      .json(
+        response.error || 'Some error occurred while creating the exercise.'
+      );
+  }
+};
+
 module.exports = {
   getAll,
   getSingleExercise,
+  createExercise,
 };

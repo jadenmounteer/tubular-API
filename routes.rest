@@ -22,6 +22,19 @@ GET http://localhost:3000/exercises
 ### Get exercise by id
 GET http://localhost:3000/exercises/628d436adb3d9e3cba6a1792
 
+### Create a new exercise
+POST http://localhost:3000/exercises HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Run Around the Block",
+    "description":"Run around the block near our apartment.",
+    "images":[],
+    "videos":[],
+    "tags":["cardio", "no-weight"]
+}
+
+
 
 ### HEROKU
 
@@ -46,4 +59,16 @@ GET https://tubular-backend.herokuapp.com/exercises
 
 ### Get exercise by id
 GET https://tubular-backend.herokuapp.com/exercises/628d436adb3d9e3cba6a1792
+
+### Create a new exercise
+POST https://tubular-backend.herokuapp.com/exercises HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Run Around the Block",
+    "description":"Run around the block near our apartment.",
+    "images":[],
+    "videos":[],
+    "tags":["cardio", "no-weight"]
+}
 
