@@ -2,15 +2,18 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId; // This is so we can query by the db ID
 
 const getAll = async (req, res) => {
-  const result = await mongodb
+  mongodb
     .getDb()
     .db('tubular')
     .collection('user_profiles')
-    .find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  });
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
 };
 
 const getSingleProfile = async (req, res) => {

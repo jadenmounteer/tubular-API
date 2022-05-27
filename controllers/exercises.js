@@ -3,21 +3,27 @@ const ObjectId = require('mongodb').ObjectId; // This is so we can query by the 
 
 const getAll = async (req, res) => {
   const userId = new ObjectId(req.params.user_id);
-  const result = await mongodb
+
+  mongodb
     .getDb()
     .db('tubular')
     .collection('exercises')
-    .find();
-  result.toArray().then((lists) => {
-    // Filter out the custom exercises that should not be visible to the user
-    const filteredList = lists.filter((exercise) => {
-      if (exercise.user_id == userId || exercise.user_added == 'false') {
-        return exercise;
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
       }
+
+      // Filter out the custom exercises that should not be visible to the user
+      const filteredList = lists.filter((exercise) => {
+        if (exercise.user_id == userId || exercise.user_added == 'false') {
+          return exercise;
+        }
+      });
+
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(filteredList);
     });
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(filteredList);
-  });
 };
 
 const getSingleExercise = async (req, res) => {
