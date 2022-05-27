@@ -1,7 +1,7 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId; // This is so we can query by the db ID
 
-const getAll = async (req, res) => {
+const getAll = (req, res) => {
   const userId = new ObjectId(req.params.user_id);
 
   mongodb
@@ -26,17 +26,22 @@ const getAll = async (req, res) => {
     });
 };
 
-const getSingleExercise = async (req, res) => {
+const getSingleExercise = (req, res) => {
   const exerciseId = new ObjectId(req.params.exercise_id);
-  const result = await mongodb
+
+  mongodb
     .getDb()
     .db('tubular')
     .collection('exercises')
-    .find({ _id: exerciseId });
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
-  });
+    .find({ _id: exerciseId })
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
 };
 
 const createExercise = async (req, res) => {
