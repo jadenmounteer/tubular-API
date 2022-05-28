@@ -17,6 +17,10 @@ const getAll = (req, res) => {
 };
 
 const getSingleProfile = (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must be a valid id.');
+  }
+
   const userId = new ObjectId(req.params.id);
 
   mongodb
@@ -58,6 +62,10 @@ const createProfile = async (req, res) => {
 };
 
 const deleteProfile = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must be a valid id.');
+  }
+
   const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()
@@ -77,6 +85,10 @@ const deleteProfile = async (req, res) => {
 };
 
 const updateProfile = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must be a valid id.');
+  }
+
   const userId = new ObjectId(req.params.id);
   // be aware of updateOne if you only want to update specific fields
   const profile = {

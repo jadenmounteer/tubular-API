@@ -110,6 +110,10 @@ const checkIfAbleToDeleteExercise = async (req, res) => {
 };
 
 async function deleteExercise(exerciseId, req, res) {
+  if (!ObjectId.isValid(exerciseId)) {
+    res.status(400).json('Must be a valid exercise id.');
+  }
+
   const response = await mongodb
     .getDb()
     .db('tubular')
@@ -127,6 +131,10 @@ async function deleteExercise(exerciseId, req, res) {
 }
 
 const updateExercise = async (req, res) => {
+  if (!ObjectId.isValid(req.params.exercise_id)) {
+    res.status(400).json('Must be a valid exercise id.');
+  }
+
   const exerciseId = new ObjectId(req.params.exercise_id);
   // be aware of updateOne if you only want to update specific fields
   const exercise = {
