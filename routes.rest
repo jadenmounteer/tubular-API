@@ -30,7 +30,7 @@ content-type: application/json
 }
 
 ### Get all exercises visible to the user
-GET http://localhost:3000/exercises/6289c73116dced53b6301f34
+GET http://localhost:3000/exercises/62871171ad3a5374a92f8aa9
 
 ### Get exercise by id
 GET http://localhost:3000/exercises/628d436adb3d9e3cba6a1792
@@ -50,7 +50,7 @@ content-type: application/json
 
 
 ### Delete an exercise
-DELETE http://localhost:3000/exercises/628d436adb3d9e3cba6a1792
+DELETE http://localhost:3000/exercises/6290390a785b9c4897a1fae2
 
 ### Update an exercise
 PUT http://localhost:3000/exercises/628d505e82b99c3474e6c474 HTTP/1.1
