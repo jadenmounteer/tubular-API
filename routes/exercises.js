@@ -1,5 +1,6 @@
 const routes = require('express').Router();
 const exercisesController = require('../controllers/exercises.js');
+const validation = require('../middleware/validate');
 
 // Return all exercises
 routes.get('/:user_id', exercisesController.getAll);
@@ -8,7 +9,7 @@ routes.get('/:user_id', exercisesController.getAll);
 routes.get('/:exercise_id', exercisesController.getSingleExercise);
 
 // Create a user-added exercise
-routes.post('/', exercisesController.createExercise);
+routes.post('/', validation.createExercise, exercisesController.createExercise);
 
 // Delete a user-added exercise
 routes.delete('/:exercise_id', exercisesController.checkIfAbleToDeleteExercise);

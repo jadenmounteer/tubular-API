@@ -2,6 +2,10 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId; // This is so we can query by the db ID
 
 const getAll = (req, res) => {
+  if (!ObjectId.isValid(req.params.user_id)) {
+    res.status(400).json('Must be a valid user id.');
+  }
+
   const userId = new ObjectId(req.params.user_id);
 
   mongodb
@@ -27,6 +31,10 @@ const getAll = (req, res) => {
 };
 
 const getSingleExercise = (req, res) => {
+  if (!ObjectId.isValid(req.params.exercise_id)) {
+    res.status(400).json('Must be a valid exercise id.');
+  }
+
   const exerciseId = new ObjectId(req.params.exercise_id);
 
   mongodb
@@ -54,6 +62,10 @@ const createExercise = async (req, res) => {
     user_id: req.body.user_id,
     user_added: true,
   };
+
+  if (!ObjectId.isValid(exercise.user_id)) {
+    res.status(400).json('Must be a valid user id.');
+  }
 
   const response = await mongodb
     .getDb()
