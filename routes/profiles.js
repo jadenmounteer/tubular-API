@@ -1,5 +1,6 @@
 const routes = require('express').Router();
 const profilesController = require('../controllers/profiles.js');
+const validation = require('../middleware/validate');
 
 // Return all of the user profiles
 routes.get('/', profilesController.getAll);
@@ -8,7 +9,7 @@ routes.get('/', profilesController.getAll);
 routes.get('/:id', profilesController.getSingleProfile);
 
 // Create a new profile
-routes.post('/', profilesController.createProfile);
+routes.post('/', validation.createProfile, profilesController.createProfile);
 
 // Delete a profile
 routes.delete('/:id', profilesController.deleteProfile);
