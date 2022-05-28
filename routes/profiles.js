@@ -15,6 +15,6 @@ routes.post('/', validation.createProfile, profilesController.createProfile);
 routes.delete('/:id', profilesController.deleteProfile);
 
 // Update a profile
-routes.put('/:id', profilesController.updateProfile);
+routes.put('/:id', validation.createProfile, profilesController.updateProfile);
 
 module.exports = routes;

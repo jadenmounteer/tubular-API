@@ -15,6 +15,10 @@ routes.post('/', validation.createExercise, exercisesController.createExercise);
 routes.delete('/:exercise_id', exercisesController.checkIfAbleToDeleteExercise);
 
 // Update a user-added exercise
-routes.put('/:exercise_id', exercisesController.updateExercise);
+routes.put(
+  '/:exercise_id',
+  validation.createExercise,
+  exercisesController.updateExercise
+);
 
 module.exports = routes;
