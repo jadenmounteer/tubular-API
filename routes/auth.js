@@ -11,8 +11,7 @@ routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 // TODO may need to change where I am being redirected here
 routes.get(
   '/google/callback',
-  passport,
-  authenticate('google', { failureRedirect: '/' }),
+  passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     res.redirect('/dashboard');
   }

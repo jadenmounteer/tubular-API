@@ -36,8 +36,8 @@ app
   //   );
   //   next();
   // })
-  .use('/', require('./routes'))
-  .use('/auth', require('.routes/auth'));
+  .use('/', require('./routes'));
+//.use('/auth', require('./routes/auth'));
 
 // Catch any uncaught exceptions
 process.on('uncaughtException', (err, origin) => {
