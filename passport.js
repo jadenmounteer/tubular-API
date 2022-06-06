@@ -12,6 +12,29 @@ module.exports = function (passport) {
       },
       async (accessToken, refreshToken, profile, done) => {
         console.log(profile);
+
+        const newUser = {
+          googleId: profile.id,
+          displayName: profile.displayName,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          image: profile.photos[0].value,
+        };
+
+        try {
+          // See if the user exists
+          let user = await User.findOne({ googleId: profile.id });
+
+          if (user) {
+            done(null, user);
+          } else {
+            // Create a user
+            user = await User.create(newUser);
+            done(null, newUser);
+          }
+        } catch (err) {
+          console.log(err);
+        }
       }
     )
   );

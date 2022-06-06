@@ -8,12 +8,13 @@ routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 
 // @desc Google auth callback
 // @route GET /auth/google/callback
-// TODO may need to change where I am being redirected here
 routes.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/dashboard');
+    // TODO may need to change where I am being redirected here
+    //res.redirect('/dashboard');
+    console.log('logged in');
   }
 );
 
