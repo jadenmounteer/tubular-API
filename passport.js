@@ -34,16 +34,39 @@ module.exports = function (passport) {
           // }
 
           // Check if user exists
-
-          // Create a new user
-          const response = await mongodb
+          mongodb
             .getDb()
             .db('tubular')
             .collection('users')
-            .insertOne(newUser);
+            .find({ googleId: profile.id })
+            .toArray((err, lists) => {
+              if (err) {
+                // res.status(400).json({ message: err });
+                console.log('error finding user');
+              }
+              // res.setHeader('Content-Type', 'application/json');
+              // res.status(200).json(lists);
+              console.log(lists.length);
+              // If they do not exists, create the user
+              if (lists.length <= 0) {
+                mongodb
+                  .getDb()
+                  .db('tubular')
+                  .collection('users')
+                  .insertOne(newUser);
+              }
+            });
+
+          // if (!userExists) {
+          //   // Create a new user
+          //   const response = await mongodb
+          //     .getDb()
+          //     .db('tubular')
+          //     .collection('users')
+          //     .insertOne(newUser);
 
           // Log the user in
-          done(null, newUser);
+          //done(null, newUser);
 
           // if (response.acknowledged) {
           //   res.status(201).json(response);
@@ -54,6 +77,7 @@ module.exports = function (passport) {
           //       response.error ||
           //         'Some error occurred while creating the profile.'
           //     );
+          // }
           // }
         } catch (err) {
           console.log(err);
