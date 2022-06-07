@@ -14,6 +14,9 @@ app.use(cors());
 // To configure options, use this tutorial: https://stackabuse.com/handling-cors-with-node-js/
 
 // session middleware
+// I can use this to store sessions in the database.
+// It is easier done with Mongoose, so with this app I will just us local storage
+// on the frontend to make sure the user remains logged in
 app.use(
   session({
     secret: 'keyboard cat',
@@ -37,7 +40,6 @@ app
   //   next();
   // })
   .use('/', require('./routes'));
-//.use('/auth', require('./routes/auth'));
 
 // Catch any uncaught exceptions
 process.on('uncaughtException', (err, origin) => {
