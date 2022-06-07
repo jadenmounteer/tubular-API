@@ -21,18 +21,6 @@ module.exports = function (passport) {
         };
 
         try {
-          /*** MONGOOSE CODE ***/
-          // See if the user exists
-          //let user = await User.findOne({ googleId: profile.id });
-
-          // if (user) {
-          //   done(null, user);
-          // } else {
-          //   // Create a user
-          //   user = await User.create(newUser);
-          //   done(null, newUser);
-          // }
-
           // Check if user exists
           mongodb
             .getDb()
@@ -46,7 +34,7 @@ module.exports = function (passport) {
               }
               // res.setHeader('Content-Type', 'application/json');
               // res.status(200).json(lists);
-              console.log(lists.length);
+
               // If they do not exists, create the user
               if (lists.length <= 0) {
                 mongodb
@@ -56,29 +44,6 @@ module.exports = function (passport) {
                   .insertOne(newUser);
               }
             });
-
-          // if (!userExists) {
-          //   // Create a new user
-          //   const response = await mongodb
-          //     .getDb()
-          //     .db('tubular')
-          //     .collection('users')
-          //     .insertOne(newUser);
-
-          // Log the user in
-          //done(null, newUser);
-
-          // if (response.acknowledged) {
-          //   res.status(201).json(response);
-          // } else {
-          //   res
-          //     .status(500)
-          //     .json(
-          //       response.error ||
-          //         'Some error occurred while creating the profile.'
-          //     );
-          // }
-          // }
         } catch (err) {
           console.log(err);
         }
