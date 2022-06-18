@@ -6,7 +6,7 @@ Use: npm run dev
 
 # Pushing changes
 
-Commit your changes to gitHub.
+Commit your changes to gitHub.hero
 Remember to also push your changes to Heroku using: git push heroku
 
 # Debugging

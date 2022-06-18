@@ -2,6 +2,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy; // TODO This
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const mongodb = require('./db/connect');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = function (passport) {
   passport.use(
